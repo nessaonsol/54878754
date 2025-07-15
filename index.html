@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Dog Project - Helping Dogs One Coin at a Time</title>
+    <title>Growth Token</title>
     <style>
         * {
             margin: 0;
@@ -12,300 +12,203 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff8c00, #ffa500, #ff7f50);
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
             color: #333;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 60px 20px;
+            position: relative;
         }
 
-        .x-button {
-            position: fixed;
+        .x-logo {
+            position: absolute;
             top: 20px;
             right: 20px;
+            width: 32px;
+            height: 32px;
             background: #000;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
         }
 
-        .x-button:hover {
-            background: #1da1f2;
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(29, 161, 242, 0.4);
+        .x-logo:hover {
+            background: #333;
+            transform: scale(1.05);
         }
 
-        header {
+        .x-logo svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .header {
             text-align: center;
-            padding: 40px 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
+            margin-bottom: 80px;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 10px;
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: #fff;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .paw-emoji {
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+        .tagline {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 400;
         }
 
         .section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
         }
 
-        .section h2 {
-            color: #ff6b35;
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .hero-section {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .hero-section p {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .how-it-works {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .step {
-            background: linear-gradient(135deg, #fff2e6, #ffe6cc);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            border: 3px solid #ff8c00;
-            transition: transform 0.3s ease;
-        }
-
-        .step:hover {
-            transform: translateY(-5px);
-        }
-
-        .step-number {
-            background: #ff8c00;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 15px;
-        }
-
-        .step h3 {
-            color: #ff6b35;
-            margin-bottom: 10px;
+        .section-title {
             font-size: 1.4rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 20px;
         }
 
-        .step p {
-            color: #666;
-            line-height: 1.5;
+        .section-text {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 24px;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .stat-box {
-            background: #ff8c00;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .charity-logos {
+        .platforms {
             display: flex;
+            gap: 24px;
+            margin: 32px 0;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
         }
 
-        .charity-logo {
-            width: 120px;
-            height: 120px;
-            background: #fff;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            border: 2px solid #ff8c00;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        .platform {
+            background: white;
+            padding: 20px 28px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            font-size: 0.95rem;
+            color: #666;
+            border: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
         }
 
-        .cta-button {
-            background: linear-gradient(135deg, #ff6b35, #ff8c00);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 30px;
+        .platform:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .highlight {
+            background: #f8f9fa;
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+            margin: 40px 0;
+        }
+
+        .highlight-title {
             font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            margin: 20px 10px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 12px;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        .highlight-text {
+            color: #666;
+            font-size: 1.05rem;
         }
 
-        footer {
+        .footer {
             text-align: center;
-            padding: 40px 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            margin-top: 30px;
-            color: white;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.2rem; }
-            .how-it-works { grid-template-columns: 1fr; }
+        .footer-text {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 16px;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .platforms {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .platform {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="https://x.com/TheDogProject_1" target="_blank" class="x-button">𝕏</a>
     <div class="container">
-        <header>
-            <h1>🐕 The Dog Project</h1>
-            <p class="subtitle">Helping Dogs One Coin at a Time</p>
-            <span class="paw-emoji">🐾</span>
-        </header>
+        <a href="https://x.com/growthcoin_sol" target="_blank" class="x-logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+        </a>
+        
+        <div class="header">
+            <div class="logo">Growth Token</div>
+            <div class="tagline">Advertising-powered cryptocurrency</div>
+        </div>
 
-        <section class="section hero-section">
-            <h2>Making a Difference for Our Furry Friends</h2>
-            <p>The Dog Project is a revolutionary cryptocurrency initiative where <strong>100% of all transaction fees</strong> are donated directly to dog charities worldwide. Every trade, every transaction, every interaction with our coin helps save and improve the lives of dogs in need.</p>
-        </section>
-
-        <section class="section">
-            <h2>How The Dog Project Works</h2>
-            <div class="how-it-works">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Buy or Trade Our Coin</h3>
-                    <p>Purchase Dog Project tokens through our platform. Every transaction generates a small fee that goes directly to our charity fund.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Fees Are Collected</h3>
-                    <p>All transaction fees are automatically collected in a transparent smart contract wallet that can be audited by anyone.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Monthly Donations</h3>
-                    <p>Every month, 100% of collected fees are distributed to verified dog charities, shelters, and rescue organizations.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Transparency Reports</h3>
-                    <p>We publish detailed reports showing exactly where every dollar went, complete with photos and updates from the charities we support.</p>
-                </div>
+        <div class="section">
+            <div class="section-title">What is Growth Token?</div>
+            <div class="section-text">
+                Growth Token is a cryptocurrency that uses advertising as its primary growth mechanism. Instead of traditional marketing approaches, the developer allocation is dedicated entirely to advertising campaigns across major platforms.
             </div>
-        </section>
+        </div>
 
-        <section class="section">
-            <h2>Our Partner Charities</h2>
-            <p style="text-align: center; margin-bottom: 20px;">We work with trusted organizations dedicated to dog welfare:</p>
-            <div class="charity-logos">
-                <div class="charity-logo">🏠</div>
-                <div class="charity-logo">🐕‍🦺</div>
-                <div class="charity-logo">❤️</div>
-                <div class="charity-logo">🎾</div>
-                <div class="charity-logo">🦴</div>
-                <div class="charity-logo">🐾</div>
+        <div class="section">
+            <div class="section-title">How it works</div>
+            <div class="section-text">
+                The developer bag funds targeted advertising campaigns on platforms where mainstream users spend their time. This approach follows the successful model of coins like DOGE, focusing on mass adoption through visibility.
             </div>
-            <p style="text-align: center; margin-top: 20px; color: #666;">Local shelters, rescue organizations, therapy dog programs, and more!</p>
-        </section>
+            
+            <div class="platforms">
+                <div class="platform">TikTok</div>
+                <div class="platform">YouTube</div>
+                <div class="platform">Google Ads</div>
+                <div class="platform">Meta</div>
+            </div>
+        </div>
 
-        <section class="section" style="text-align: center;">
-            <h2>Join the Pack Today!</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 30px;">Every transaction makes a difference. Start helping dogs today while participating in the future of charitable cryptocurrency.</p>
-            <a href="#" class="cta-button">Buy Dog Coins</a>
-            <a href="#" class="cta-button">View Transparency Report</a>
-            <a href="#" class="cta-button">Nominate a Charity</a>
-        </section>
+        <div class="highlight">
+            <div class="highlight-title">The strategy</div>
+            <div class="highlight-text">
+                By investing developer funds directly into advertising rather than personal enrichment, Growth Token aims to onboard mainstream users who wouldn't otherwise discover cryptocurrency. The goal is sustainable growth through increased visibility and adoption.
+            </div>
+        </div>
 
-        <footer>
-            <p>&copy; 2025 The Dog Project. Making tails wag, one transaction at a time.</p>
-            <p style="opacity: 0.8; margin-top: 10px;">🐕 Woof! Together we can make a difference! 🐕</p>
-        </footer>
+        <div class="footer">
+            <div class="footer-text">Growth Token - Built for mainstream adoption</div>
+        </div>
     </div>
 </body>
 </html>
