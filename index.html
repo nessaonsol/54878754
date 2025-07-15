@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Growth Token</title>
+    <title>Laugh Coin</title>
     <style>
         * {
             margin: 0;
@@ -12,202 +12,203 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #fafafa;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fff7e6 0%, #ffeaa7 100%);
+            min-height: 100vh;
+            color: #2d3436;
+            line-height: 1.8;
+            padding: 40px 20px;
         }
 
         .container {
-            max-width: 680px;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
             position: relative;
         }
 
-        .x-logo {
+        .x-button {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 32px;
-            height: 32px;
-            background: #000;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            top: 0;
+            right: 0;
+            background: #e17055;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
             text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .x-logo:hover {
-            background: #333;
-            transform: scale(1.05);
-        }
-
-        .x-logo svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .logo {
-            font-size: 2.8rem;
-            font-weight: 300;
-            color: #2c3e50;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            color: #7f8c8d;
+            font-size: 0.9em;
             font-weight: 400;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(225, 112, 85, 0.3);
+        }
+
+        .x-button:hover {
+            background: #d63031;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(225, 112, 85, 0.4);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #e17055;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #636e72;
+            font-style: italic;
+            font-weight: 300;
         }
 
         .section {
             margin-bottom: 60px;
         }
 
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: #2c3e50;
+        h2 {
+            font-size: 1.8em;
+            color: #d63031;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            color: #e17055;
+            margin: 35px 0 15px 0;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1.1em;
             margin-bottom: 20px;
-        }
-
-        .section-text {
-            font-size: 1.05rem;
-            color: #555;
-            margin-bottom: 24px;
-        }
-
-        .platforms {
-            display: flex;
-            gap: 24px;
-            margin: 32px 0;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .platform {
-            background: white;
-            padding: 20px 28px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            font-size: 0.95rem;
-            color: #666;
-            border: 1px solid #f0f0f0;
-            transition: all 0.2s ease;
-        }
-
-        .platform:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            color: #2d3436;
+            font-weight: 300;
         }
 
         .highlight {
-            background: #f8f9fa;
-            padding: 32px;
-            border-radius: 12px;
-            border-left: 4px solid #3498db;
-            margin: 40px 0;
+            background: rgba(255, 204, 0, 0.15);
+            padding: 25px;
+            border-left: 3px solid #fdcb6e;
+            margin: 30px 0;
+            font-style: italic;
         }
 
-        .highlight-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #2c3e50;
-            margin-bottom: 12px;
+        .quote {
+            font-size: 1.3em;
+            text-align: center;
+            color: #e17055;
+            margin: 50px 0;
+            font-style: italic;
+            font-weight: 300;
         }
 
-        .highlight-text {
-            color: #666;
-            font-size: 1.05rem;
+        .divider {
+            width: 50px;
+            height: 2px;
+            background: #fdcb6e;
+            margin: 50px auto;
         }
 
         .footer {
             text-align: center;
             margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid #eee;
+            padding: 30px 0;
+            color: #636e72;
+            font-style: italic;
         }
 
-        .footer-text {
-            color: #999;
-            font-size: 0.9rem;
+        .emoji {
+            font-size: 1.2em;
+            margin: 0 5px;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
             .container {
-                padding: 40px 16px;
-            }
-            
-            .logo {
-                font-size: 2.2rem;
-            }
-            
-            .platforms {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .platform {
-                width: 100%;
-                max-width: 200px;
-                text-align: center;
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="https://x.com/Growth_Coins" target="_blank" class="x-logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-        </a>
-        
-        <div class="header">
-            <div class="logo">Growth Token</div>
-            <div class="tagline">Advertising-powered cryptocurrency</div>
-        </div>
+        <header>
+            <a href="https://x.com/LaughCoinSolana" target="_blank" class="x-button">Follow on X</a>
+            <h1>Laugh Coin</h1>
+            <p class="subtitle">When memes lost their soul</p>
+        </header>
 
         <div class="section">
-            <div class="section-title">What is Growth Token?</div>
-            <div class="section-text">
-                Growth Token is a cryptocurrency that uses advertising as its primary growth mechanism. Instead of traditional marketing approaches, the developer allocation is dedicated entirely to advertising campaigns across major platforms.
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">How it works</div>
-            <div class="section-text">
-                The developer bag funds targeted advertising campaigns on platforms where mainstream users spend their time. This approach follows the successful model of coins like DOGE, focusing on mass adoption through visibility.
-            </div>
+            <h2>The Beginning</h2>
+            <p>Memecoins started as pure internet magic. They were born from genuine communities, inside jokes, and the beautiful chaos of people coming together around something silly and wonderful.</p>
             
-            <div class="platforms">
-                <div class="platform">TikTok</div>
-                <div class="platform">YouTube</div>
-                <div class="platform">Google Ads</div>
-                <div class="platform">Meta</div>
+            <p>Dogecoin wasn't created to make anyone rich. It was a joke that became something real because people believed in kindness, tipping, and having fun together online.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <h2>What Happened</h2>
+            
+            <div class="highlight">
+                <p>Somewhere along the way, the laughter died. What replaced it was calculated, cold, and utterly predictable.</p>
+            </div>
+
+            <p>Now we have an endless parade of copy-paste coins. Same animals, same promises, same inevitable crash. The creativity has been systematically murdered by greed.</p>
+
+            <h3>The Elon Problem</h3>
+            <p>Entire ecosystems now exist solely to react to one man's tweets. This isn't decentralization - it's digital feudalism. The community-driven spirit has been replaced by waiting for a billionaire's approval.</p>
+
+            <h3>News Cycle Parasites</h3>
+            <p>Modern memecoins don't create culture. They feed off it like vultures. Something trends? Within hours, there's a coin for it. No thought, no creativity, just pure opportunism.</p>
+
+            <h3>The Relaunch Factory</h3>
+            <p>The same garbage, recycled endlessly. Pick an animal, add "coin" to the name, hire some influencers, dump on retail investors. Repeat until the internet breaks.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <h2>What We Lost</h2>
+            <p>Real communities. Organic growth. The ability to surprise and delight. The democratic promise of putting financial power back in ordinary people's hands.</p>
+
+            <p>We traded authentic human connection for manufactured hype. We gave up innovation for imitation.</p>
+
+            <div class="quote">
+                "Memecoins were supposed to be the punk rock of crypto. Instead, they became elevator music."
             </div>
         </div>
 
-        <div class="highlight">
-            <div class="highlight-title">The strategy</div>
-            <div class="highlight-text">
-                By investing developer funds directly into advertising rather than personal enrichment, Growth Token aims to onboard mainstream users who wouldn't otherwise discover cryptocurrency. The goal is sustainable growth through increased visibility and adoption.
+        <div class="divider"></div>
+
+        <div class="section">
+            <h2>The Path Forward</h2>
+            <p>Maybe it's time to remember what made memecoins special in the first place. Not the money, but the magic. Not the hype, but the humanity.</p>
+
+            <p>True innovation comes from genuine creativity and real community building. Not from parsing billionaire tweets or chasing trending hashtags.</p>
+
+            <div class="highlight">
+                <p>The future of memecoins lies in returning to their roots: authentic communities creating something genuinely new and meaningful together.</p>
             </div>
         </div>
 
         <div class="footer">
-            <div class="footer-text">Growth Token - Built for mainstream adoption</div>
+            <p>Remember the laughter <span class="emoji">🌻</span></p>
+            <p>Demand better</p>
         </div>
     </div>
 </body>
