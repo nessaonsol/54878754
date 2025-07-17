@@ -3,72 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Rubbish</title>
+    <title>AUT - The Original Useless Coin</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            line-height: 1.6;
-            color: #333;
-            background: white;
-        }
-        
-        h1 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2em;
-        }
-        
-        p {
-            margin-bottom: 20px;
-        }
-        
-        .center {
-            text-align: center;
-            margin: 40px 0;
-            font-style: italic;
-        }
-        
-        .x-button {
-            display: block;
-            width: 120px;
-            margin: 40px auto;
-            padding: 12px 20px;
+            font-family: 'Arial', sans-serif;
             background: #000;
             color: white;
-            text-decoration: none;
+            overflow-x: hidden;
+        }
+        
+        .hero-image {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            border-radius: 5px;
-            font-weight: bold;
+        }
+        
+        .top-buttons {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .social-button {
+            width: 50px;
+            height: 50px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .social-button:hover {
+            background: #333;
+            transform: scale(1.1);
         }
         
         .x-button:hover {
-            background: #333;
+            background: #1DA1F2;
+        }
+        
+        .hero-title {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out;
+            color: #ffd700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            border-right: 3px solid white;
+            border-bottom: 3px solid white;
+            transform: rotate(45deg);
+        }
+        
+        .content-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            padding: 100px 50px;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: white;
+        }
+        
+        .evidence-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .evidence-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            background: linear-gradient(45deg, #ffd700, #ffb347);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #000;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .evidence-image.has-image {
+            background: none;
+        }
+        
+        .evidence-image:hover {
+            transform: scale(1);
+        }
+        
+        .evidence-text {
+            text-align: left;
+        }
+        
+        .evidence-points {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+        
+        .evidence-points li {
+            margin-bottom: 15px;
+            list-style: none;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .evidence-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .evidence-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .evidence-points li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .useless-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .useless-link a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid #ffd700;
+        }
+        
+        .useless-link a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.3);
+        }
+        
+        .details-section {
+            background: #1a1a1a;
+            padding: 100px 50px;
+        }
+        
+        .details-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .details-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .details-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .final-proof {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #ffd700, #ffb347);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 4rem;
+            text-align: center;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .final-proof.has-image {
+            background: none;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 80px 50px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.3);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            color: #333;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .evidence-container,
+            .details-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .content-section,
+            .details-section,
+            .stats-section {
+                padding: 60px 30px;
+            }
+            
+            .section-title,
+            .details-title {
+                font-size: 2rem;
+            }
+            
+            .top-buttons {
+                gap: 10px;
+            }
+            
+            .social-button {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Project Rubbish</h1>
-    
-    <p>
-        Rubbish is something we all see but don't ever pay attention to, 
-        like a wrapper on the road.
-    </p>
-    
-    <p>
-        It's only when you see a lot of it that you care and we want to use that.
-    </p>
-    
-    <p>
-        So we will mass deploy our coin RUBBISH to see if people care about our project.
-    </p>
-    
-    <div class="center">
-        When the ignored becomes impossible to ignore.
+    <div class="top-buttons">
+        <a href="https://x.com/AnotherUseless_" target="_blank" class="social-button x-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+            </svg>
+        </a>
     </div>
     
-    <a href="https://x.com/Rubbish_Coins" class="x-button" target="_blank">Follow on X</a>
+    <div class="hero-image">
+        <div class="hero-overlay">
+            <h1 class="hero-title">AUT</h1>
+            <p class="hero-subtitle">The original useless coin made in 2017 with undeniable evidence</p>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2 class="section-title">Why AUT?</h2>
+        <div class="evidence-container">
+            <div>
+                <div class="evidence-image" style="background-image: url('your-aut-logo.png');">
+                    <!-- To use your own image, replace the URL above and optionally add class="evidence-image has-image" to remove the gold background -->
+                </div>
+                <div class="useless-link">
+                    <a href="https://bitcointalk.org/index.php?topic=2291286.0" target="_blank">Read The Origin Story</a>
+                </div>
+            </div>
+            <div class="evidence-text">
+                <ul class="evidence-points">
+                    <li>Created in 2017 by an angry user who kept getting rugged</li>
+                    <li>Named "Another Useless Token" to tokenize pure frustration</li>
+                    <li>Born from the rage of losing money to crypto scams</li>
+                    <li>The original "useless" token before it became trendy</li>
+                    <li>Raw, authentic anger turned into blockchain history</li>
+                </ul>
+                
+                <div class="evidence-links">
+                    <a href="https://bitcointalk.org/index.php?topic=2291286.0" target="_blank">Original 2017 BitcoinTalk Post</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="details-section">
+        <div class="details-container">
+            <div>
+                <h3 class="details-title">The Original Useless Token</h3>
+                <p class="details-text">
+                    In 2017, long before "useless" tokens became a meme, one frustrated user had enough. After getting rugged by multiple crypto projects and losing money to scam after scam, they decided to channel their pure rage into something honest. Thus, "Another Useless Token" (AUT) was born - not as a joke, but as a middle finger to the entire crypto space. <strong>This wasn't about being trendy or ironic.</strong> This was raw anger tokenized on the blockchain. The creator wanted something that would never promise anything, never disappoint anyone, and never rug anyone because it was upfront about being completely useless from day one.
+                </p>
+            </div>
+            <div>
+                <div class="final-proof" style="background-image: url('your-aut-logo.png');">
+                    <!-- To use your own image, replace the URL above and optionally add class="final-proof has-image" to remove the gold background -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
