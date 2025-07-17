@@ -3,278 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promote Coin</title>
+    <title>Project Rubbish</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #fef7f0 0%, #fdf2e9 100%);
-            color: #5d4037;
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
             line-height: 1.6;
-            min-height: 100vh;
+            color: #333;
+            background: white;
         }
-
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            position: relative;
-        }
-
-        .x-logo {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #ff8a65 0%, #ff7043 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(255, 112, 67, 0.3);
-        }
-
-        .x-logo:hover {
-            background: linear-gradient(135deg, #ff7043 0%, #ff5722 100%);
-            transform: scale(1.05) translateY(-1px);
-            box-shadow: 0 4px 16px rgba(255, 112, 67, 0.4);
-        }
-
-        .x-logo svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
-        }
-
-        .header {
+        
+        h1 {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
+            font-size: 2em;
         }
-
-        .logo {
-            font-size: 2.8rem;
-            font-weight: 300;
-            background: linear-gradient(135deg, #d84315 0%, #ff8a65 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            color: #8d6e63;
-            font-weight: 400;
-        }
-
-        .section {
-            margin-bottom: 60px;
-        }
-
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: #bf360c;
+        
+        p {
             margin-bottom: 20px;
         }
-
-        .section-text {
-            font-size: 1.05rem;
-            color: #6d4c41;
-            margin-bottom: 24px;
-        }
-
-        .platforms {
-            display: flex;
-            gap: 24px;
-            margin: 32px 0;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .platform {
-            background: linear-gradient(135deg, #ffffff 0%, #fff8f5 100%);
-            padding: 20px 28px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(191, 54, 12, 0.1);
-            font-size: 0.95rem;
-            color: #8d6e63;
-            border: 1px solid #ffccbc;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .platform::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 138, 101, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .platform:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(191, 54, 12, 0.15);
-            border-color: #ffab91;
-        }
-
-        .platform:hover::before {
-            left: 100%;
-        }
-
-        .highlight {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-            padding: 32px;
-            border-radius: 16px;
-            border-left: 4px solid #ff8a65;
-            margin: 40px 0;
-            box-shadow: 0 4px 20px rgba(255, 138, 101, 0.1);
-            position: relative;
-        }
-
-        .highlight::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 138, 101, 0.05) 0%, rgba(255, 171, 145, 0.05) 100%);
-            border-radius: 16px;
-            pointer-events: none;
-        }
-
-        .highlight-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #bf360c;
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .highlight-text {
-            color: #6d4c41;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer {
+        
+        .center {
             text-align: center;
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 138, 101, 0.2);
-        }
-
-        .footer-text {
-            color: #a1887f;
-            font-size: 0.9rem;
-        }
-
-        .glow-effect {
-            position: relative;
-        }
-
-        .glow-effect::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ff8a65, #ffab91, #ff8a65);
-            border-radius: 18px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .highlight:hover .glow-effect::after {
-            opacity: 0.3;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 40px 16px;
-            }
-            
-            .logo {
-                font-size: 2.2rem;
-            }
-            
-            .platforms {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .platform {
-                width: 100%;
-                max-width: 200px;
-                text-align: center;
-            }
+            margin: 40px 0;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="https://x.com/PromoteCoinSol" target="_blank" class="x-logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-        </a>
-        
-        <div class="header">
-            <div class="logo">Promote Coin</div>
-            <div class="tagline">Fee-powered advertising cryptocurrency</div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">What is Promote Coin?</div>
-            <div class="section-text">
-                Advert Coin is a revolutionary cryptocurrency that channels 100% of transaction fees directly into advertising campaigns. Every fee collected goes straight into promoting our coin across major social media platforms, creating a self-sustaining cycle of growth and visibility.
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">How it works</div>
-            <div class="section-text">
-                Instead of fees disappearing into developer pockets, every transaction fee becomes fuel for our advertising engine. We run targeted campaigns on the platforms where millions of potential users discover new opportunities every day.
-            </div>
-            
-            <div class="platforms">
-                <div class="platform">TikTok</div>
-                <div class="platform">YouTube</div>
-                <div class="platform">Instagram</div>
-                <div class="platform">Twitter</div>
-                <div class="platform">Google Ads</div>
-                <div class="platform">Facebook</div>
-            </div>
-        </div>
-
-        <div class="highlight glow-effect">
-            <div class="highlight-title">Our commitment</div>
-            <div class="highlight-text">
-                Total transparency, total dedication. Every single fee collected from transactions goes directly into advertising spend. No developer enrichment, no hidden allocations – just pure, relentless promotion that benefits every holder through increased exposure and adoption.
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="footer-text">Advert Coin - Every fee fuels our growth</div>
-        </div>
+    <h1>Project Rubbish</h1>
+    
+    <p>
+        Rubbish is something we all see but don't ever pay attention to, 
+        like a wrapper on the road.
+    </p>
+    
+    <p>
+        It's only when you see a lot of it that you care and we want to use that.
+    </p>
+    
+    <p>
+        So we will mass deploy our coin RUBBISH to see if people care about our project.
+    </p>
+    
+    <div class="center">
+        When the ignored becomes impossible to ignore.
     </div>
 </body>
 </html>
