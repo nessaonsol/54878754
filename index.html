@@ -211,25 +211,15 @@
             font-size: 0.95rem;
         }
 
-        .upload-area {
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            padding: 3rem 2rem;
+        .image-container {
             text-align: center;
             margin: 2rem 0;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            background: #fafafa;
         }
 
-        .upload-area:hover {
-            border-color: #aaa;
-            background: #f5f5f5;
-        }
-
-        .upload-area p {
-            color: #999;
-            margin: 0;
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         .video-container {
@@ -312,9 +302,8 @@
                 </div>
 
                 <h3>Configuration</h3>
-                <div class="upload-area" onclick="document.querySelector('#file-input').click()">
-                    <p>Upload GitHub configuration screenshot</p>
-                    <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="handleUpload(this)">
+                <div class="image-container">
+                    <img src="github.png" alt="GitHub Configuration Screenshot" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                 </div>
 
                 <div class="code"># Environment Setup
@@ -374,8 +363,8 @@ grok_key = os.getenv('GROK_API_KEY')</div>
             <h2>Live Demo</h2>
             <div class="video-container">
                 <video controls>
-                    <source src="grocket-demo.mp4" type="video/mp4">
-                    <source src="grocket-demo.webm" type="video/webm">
+                    <source src="video.mp4" type="video/mp4">
+                    <source src="video.mp4" type="video/webm">
                     Video not supported
                 </video>
             </div>
@@ -429,19 +418,15 @@ grok_key = os.getenv('GROK_API_KEY')</div>
     </footer>
 
     <script>
-        function handleUpload(input) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const uploadArea = input.parentNode;
-                    uploadArea.innerHTML = `
-                        <img src="${e.target.result}" style="max-width: 100%; border-radius: 6px;" alt="Configuration">
-                        <p style="margin-top: 1rem; color: #28a745;">Configuration uploaded successfully</p>
-                    `;
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
