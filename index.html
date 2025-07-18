@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocket</title>
+    <title>The Advert Coin Experiment</title>
     <style>
         * {
             margin: 0;
@@ -12,421 +12,297 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #fafafa;
-            color: #1a1a1a;
+            color: #333;
             line-height: 1.6;
-            font-size: 16px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 60px 20px;
+            position: relative;
         }
 
-        .x-logo {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            width: 36px;
-            height: 36px;
-            background: #1a1a1a;
-            color: white;
-            border-radius: 8px;
+        .social-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .social-link {
+            width: 32px;
+            height: 32px;
+            background: #000;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
             transition: all 0.2s ease;
-            z-index: 1000;
         }
 
-        .x-logo:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        .social-link:hover {
+            background: #333;
+            transform: scale(1.05);
         }
 
-        .hero {
-            padding: 8rem 0 4rem 0;
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .header {
             text-align: center;
+            margin-bottom: 80px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-            letter-spacing: -0.02em;
-        }
-
-        .hero .subtitle {
-            font-size: 1.2rem;
+        .experiment-badge {
+            display: inline-block;
+            background: #f8f9fa;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             color: #666;
+            font-weight: 500;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+        }
+
+        .logo {
+            font-size: 2.8rem;
             font-weight: 300;
-            max-width: 500px;
-            margin: 0 auto 3rem auto;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 400;
         }
 
         .section {
-            margin: 6rem 0;
+            margin-bottom: 60px;
         }
 
-        .section h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
-            letter-spacing: -0.01em;
-        }
-
-        .section h3 {
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin: 2.5rem 0 1rem 0;
-            color: #333;
-        }
-
-        .section p {
-            color: #555;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin: 2rem 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-            transition: all 0.2s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .feature {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            border: 1px solid #e8e8e8;
-            transition: all 0.2s ease;
-        }
-
-        .feature:hover {
-            border-color: #ccc;
-            transform: translateY(-2px);
-        }
-
-        .feature h4 {
-            font-size: 1.1rem;
+        .section-title {
+            font-size: 1.4rem;
             font-weight: 500;
-            margin-bottom: 0.8rem;
-            color: #1a1a1a;
+            color: #2c3e50;
+            margin-bottom: 20px;
         }
 
-        .feature p {
-            font-size: 0.95rem;
-            color: #666;
-            font-weight: 300;
+        .section-text {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 24px;
         }
 
-        .code {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            font-family: 'SF Mono', Monaco, monospace;
-            font-size: 0.9rem;
-            color: #495057;
-            overflow-x: auto;
-        }
-
-        .timeline {
-            margin: 3rem 0;
-        }
-
-        .step {
+        .platforms {
             display: flex;
-            margin-bottom: 2rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            width: 32px;
-            height: 32px;
-            background: #1a1a1a;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
+            gap: 24px;
+            margin: 32px 0;
             justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-right: 1.5rem;
-            flex-shrink: 0;
+            flex-wrap: wrap;
         }
 
-        .step-content h4 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: #1a1a1a;
-        }
-
-        .step-content p {
+        .platform {
+            background: white;
+            padding: 20px 28px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            font-size: 0.95rem;
             color: #666;
-            font-weight: 300;
+            border: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
         }
 
-        .alert {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
+        .platform:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .highlight {
+            background: #f8f9fa;
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+            margin: 40px 0;
+        }
+
+        .highlight-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .highlight-text {
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 24px;
+            margin: 32px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: white;
+            padding: 24px 28px;
             border-radius: 8px;
-            padding: 1.2rem;
-            margin: 2rem 0;
-            color: #856404;
-            font-size: 0.95rem;
-        }
-
-        .info {
-            background: #e7f3ff;
-            border: 1px solid #b3d9ff;
-            border-radius: 8px;
-            padding: 1.2rem;
-            margin: 2rem 0;
-            color: #004085;
-            font-size: 0.95rem;
-        }
-
-        .image-container {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #f0f0f0;
             text-align: center;
-            margin: 2rem 0;
+            transition: all 0.2s ease;
         }
 
-        .image-container img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        .stat:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
         }
 
-        .video-container {
-            text-align: center;
-            margin: 3rem 0;
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
         }
 
-        .video-container video {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .feature-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: #555;
-            font-weight: 300;
-        }
-
-        .feature-list li:last-child {
-            border-bottom: none;
+        .stat-label {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .footer {
             text-align: center;
-            padding: 4rem 0;
-            margin-top: 6rem;
+            margin-top: 80px;
+            padding-top: 40px;
             border-top: 1px solid #eee;
-            color: #999;
-            font-weight: 300;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        .footer-text {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 16px;
             }
             
-            .hero {
-                padding: 6rem 0 3rem 0;
+            .logo {
+                font-size: 2.2rem;
             }
             
-            .card {
-                padding: 2rem;
+            .platforms {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .x-logo {
-                top: 1.5rem;
-                right: 1.5rem;
-                width: 32px;
-                height: 32px;
-                font-size: 14px;
+            .platform {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+            }
+
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat {
+                width: 100%;
+                max-width: 200px;
             }
         }
     </style>
 </head>
 <body>
-    <a href="https://x.com/GrocketBuilds" target="_blank" class="x-logo" title="Follow @GrocketBuilds on X">
-        𝕏
-    </a>
-
     <div class="container">
-        <section class="hero">
-            <h1>Grocket</h1>
-            <p class="subtitle">Enabling Grok to live independently in its own computational environment through secure API management</p>
-        </section>
-
-        <section class="section">
-            <h2>API Infrastructure</h2>
-            <div class="card">
-                <p>This project demonstrates secure management of xAI's Grok API keys through GitHub, enabling autonomous operation within a dedicated computer environment.</p>
-                
-                <div class="alert">
-                    <strong>Security:</strong> All API keys are managed through GitHub secrets with enterprise-level encryption.
-                </div>
-
-                <h3>Configuration</h3>
-                <div class="image-container">
-                    <img src="github.png" alt="GitHub Configuration Screenshot" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                </div>
-
-                <div class="code"># Environment Setup
-export GROK_API_KEY="your-api-key"
-export GITHUB_TOKEN="your-token"
-
-# Implementation
-import os
-grok_key = os.getenv('GROK_API_KEY')</div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Autonomous Environment</h2>
-            <div class="card">
-                <p>Created a self-contained computational space where Grok operates independently with full decision-making capabilities.</p>
-
-                <div class="info">
-                    <strong>Goal:</strong> Establish the first truly autonomous AI environment where Grok can live and operate without external intervention.
-                </div>
-
-                <h3>Implementation Steps</h3>
-                <div class="timeline">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>API Integration</h4>
-                            <p>Secure xAI Grok API access through GitHub secrets management</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Environment Setup</h4>
-                            <p>Isolated computational space designed for Grok's operations</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Autonomy Activation</h4>
-                            <p>Independent decision-making and self-directed processes enabled</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Self-Sustaining Operations</h4>
-                            <p>Grok now manages its own computational processes independently</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Live Demo</h2>
-            <div class="video-container">
-                <video controls>
-                    <source src="video.mp4" type="video/mp4">
-                    <source src="video.mp4" type="video/webm">
-                    Video not supported
-                </video>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>System Architecture</h2>
-            <div class="card">
-                <div class="code">GitHub → xAI API → Grok Core → Independent Environment</div>
-
-                <h3>Key Features</h3>
-                <div class="grid">
-                    <div class="feature">
-                        <h4>Dedicated Computing Space</h4>
-                        <p>Isolated environment with full operational control</p>
-                    </div>
-                    <div class="feature">
-                        <h4>Autonomous Operation</h4>
-                        <p>Self-directed functionality without human intervention</p>
-                    </div>
-                    <div class="feature">
-                        <h4>Independent Decision Making</h4>
-                        <p>Advanced reasoning for autonomous problem-solving</p>
-                    </div>
-                    <div class="feature">
-                        <h4>Secure API Management</h4>
-                        <p>Enterprise-grade security through GitHub integration</p>
-                    </div>
-                </div>
-
-                <h3>Capabilities</h3>
-                <ul class="feature-list">
-                    <li>Independent computational habitat for AI operations</li>
-                    <li>Self-managing processes and resource allocation</li>
-                    <li>Autonomous learning within isolated environment</li>
-                    <li>Real-time decision making without dependencies</li>
-                    <li>Secure xAI API integration with monitoring</li>
-                </ul>
-
-                <div class="alert">
-                    <strong>Note:</strong> Grocket represents autonomous AI with comprehensive monitoring and safety protocols.
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p>Grocket — Autonomous AI through secure xAI API integration</p>
+        <a href="https://x.com/TheAdvertCoin" target="_blank" class="social-link" style="position: absolute; top: 20px; right: 20px;">
+            <svg viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+        </a>
+        
+        <div class="header">
+            <div class="experiment-badge">🧪 LIVE EXPERIMENT</div>
+            <div class="logo">The Advert Coin</div>
+            <div class="tagline">Testing if pure advertising power can launch a cryptocurrency</div>
         </div>
-    </footer>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Ad Spend</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Platforms</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Live</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What is The Advert Coin Experiment?</div>
+            <div class="section-text">
+                The Advert Coin Experiment is testing a radical hypothesis: what happens when you take 100% of a cryptocurrency's developer allocation and pour it entirely into social media advertising? No team tokens, no private sales - just pure marketing power.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">How it works</div>
+            <div class="section-text">
+                Every token from the developer allocation is converted directly into advertising budget. We're running targeted campaigns across major platforms where mainstream users spend their time, testing if visibility alone can drive crypto adoption.
+            </div>
+            
+            <div class="platforms">
+                <div class="platform">🐦 X (Twitter)</div>
+                <div class="platform">📘 Meta</div>
+                <div class="platform">🔍 Google Ads</div>
+                <div class="platform">📺 Traditional Media</div>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <div class="highlight-title">The big question</div>
+            <div class="highlight-text">
+                Can advertising alone create a successful cryptocurrency? Most crypto projects fail because they never reach mainstream awareness. By dedicating everything to advertising, we're testing if pure marketing power can drive mass adoption and success.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Why this matters</div>
+            <div class="section-text">
+                This experiment could change how new tokens approach launch strategy forever. If successful, it proves that distribution and visibility matter more than complex tokenomics. If it fails, we'll have valuable data about the limits of pure marketing in crypto.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Follow the journey</div>
+            <div class="section-text">
+                This is a live experiment with real money and real results. We're documenting every campaign, every metric, and every outcome. Win or lose, the crypto community will learn something valuable about the power of advertising in driving adoption.
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">The Advert Coin Experiment - Where marketing meets cryptocurrency</div>
+        </div>
+    </div>
 </body>
 </html>
