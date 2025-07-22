@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advert Coin</title>
+    <title>Claire - AI Agent</title>
     <style>
         * {
             margin: 0;
@@ -11,323 +11,718 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-
-        .x-logo {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 40px;
-            height: 40px;
-            background: #000;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .x-logo:hover {
-            background: #333;
-            transform: scale(1.1);
-        }
-
-        .x-logo svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #2c3e50;
-            letter-spacing: -2px;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            margin-bottom: 40px;
-            color: #7f8c8d;
-            font-weight: 400;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #666;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-
-        .scroll-arrow {
-            margin-top: 10px;
-            width: 2px;
-            height: 30px;
-            background: #999;
-            position: relative;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-arrow::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -3px;
-            width: 8px;
-            height: 8px;
-            border-right: 2px solid #999;
-            border-bottom: 2px solid #999;
-            transform: rotate(45deg);
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* Content Section */
-        .content {
-            background: #fff;
-            color: #333;
-            padding: 80px 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f7f3f0;
+            min-height: 100vh;
+            color: #2d2a27;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .section {
-            margin-bottom: 80px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+        .landing-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
         }
 
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .main-content {
+            max-width: 500px;
         }
 
-        .section-title {
-            font-size: 2.5rem;
+        .logo {
+            font-size: 4rem;
             font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 30px;
-            text-align: center;
+            color: #d4672a;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
         }
 
-        .section-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 40px;
-            text-align: center;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .platforms {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .platform {
-            background: white;
-            color: #666;
-            padding: 40px 30px;
-            border-radius: 16px;
-            text-align: center;
+        .subtitle {
             font-size: 1.1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border: 1px solid #f0f0f0;
-        }
-
-        .platform:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .highlight {
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            padding: 60px 40px;
-            border-radius: 20px;
-            margin: 60px 0;
-            text-align: center;
-            border-left: 4px solid #e74c3c;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
-
-        .highlight-title {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #2c3e50;
-        }
-
-        .highlight-text {
-            font-size: 1.2rem;
+            color: #5a5651;
+            margin-bottom: 2rem;
             line-height: 1.6;
-            color: #666;
         }
 
-        .footer {
-            background: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 60px 20px;
+        .tech-badge {
+            display: inline-block;
+            background: #ffffff;
+            border: 1px solid #e8e2dc;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            color: #5a5651;
+            font-size: 0.85rem;
+            margin: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .footer-text {
-            font-size: 1.1rem;
-            opacity: 0.8;
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #e8e2dc;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            background: #ffffff;
+            color: #2d2a27;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            border-color: #d4672a;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background: #d4672a;
+            color: white;
+            border-color: #d4672a;
+        }
+
+        .btn-primary:hover {
+            background: #b8561f;
+            border-color: #b8561f;
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #2d2a27;
+            border: 1px solid #e8e2dc;
+        }
+
+        .chat-page {
+            display: none;
+            min-height: 100vh;
+            background: #f9f9f9;
+        }
+
+        .docs-page {
+            display: none;
+            min-height: 100vh;
+            background: #f9f9f9;
+        }
+
+        .docs-header {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 0;
+        }
+
+        .docs-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .docs-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #ffffff;
+            border: 1px solid #e8e2dc;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .docs-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .docs-section h3 {
+            font-size: 1.3rem;
+            color: #2d2a27;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            border-bottom: 2px solid #f4f1ed;
+            padding-bottom: 0.5rem;
+        }
+
+        .docs-section p {
+            line-height: 1.6;
+            color: #5a5651;
+            margin-bottom: 1rem;
+        }
+
+        .docs-section ul, .docs-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .docs-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            color: #5a5651;
+        }
+
+        .code-block {
+            background: #faf8f6;
+            border: 1px solid #e8e2dc;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .code-header {
+            background: #f4f1ed;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #e8e2dc;
+            font-size: 0.9rem;
+            color: #5a5651;
+            font-weight: 500;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #2d2a27;
+            background: none;
+        }
+
+        .chat-header {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: #555;
+        }
+
+        .chat-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .chat-container {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .message.user {
+            background: #d4672a;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .message.bot {
+            background: #f4f1ed;
+            border: 1px solid #e8e2dc;
+            color: #2d2a27;
+            align-self: flex-start;
+        }
+
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid #e8e2dc;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #e8e2dc;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+            background: #ffffff;
+        }
+
+        .input-field:focus {
+            border-color: #d4672a;
+            box-shadow: 0 0 0 3px rgba(212, 103, 42, 0.1);
+        }
+
+        .send-btn {
+            background: #d4672a;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .send-btn:hover {
+            background: #b8561f;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            background: #f4f1ed;
+            border: 1px solid #e8e2dc;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #cbd5e0;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        .x-button {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: #d4672a;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .x-button:hover {
+            background: #b8561f;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Mobile responsive styles */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .platforms {
-                grid-template-columns: 1fr;
-            }
-            
-            .highlight {
-                padding: 40px 20px;
-            }
+            .logo { font-size: 3rem; }
+            .subtitle { font-size: 1.2rem; padding: 0 1rem; }
+            .buttons { flex-direction: column; align-items: center; }
+            .btn { width: 200px; justify-content: center; }
+            .chat-container { margin: 1rem; height: 60vh; }
+            .message { max-width: 85%; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <a href="https://x.com/TheAdvertCoin_" target="_blank" class="x-logo">
-            <svg viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-        </a>
-        
-        <div class="hero-content">
-            <h1 class="hero-title">ADVERT COIN</h1>
-            <p class="hero-subtitle">The first cryptocurrency that advertises itself</p>
-        </div>
-        
-        <div class="scroll-indicator" onclick="scrollToContent()">
-            <span>Scroll to explore</span>
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
-
-    <!-- Content Section -->
-    <section class="content">
+    <button class="x-button" onclick="window.open('https://x.com/ClaireOpus', '_blank')" title="Follow us on X">
+        𝕏
+    </button>
+    
+    <div id="landingPage" class="landing-page">
         <div class="container">
-            <div class="section">
-                <h2 class="section-title">What is Advert Coin?</h2>
-                <p class="section-text">
-                    Advert Coin transforms the traditional crypto model by dedicating its entire development budget to strategic advertising. Every token from the dev allocation goes directly into marketing campaigns designed to bring crypto to everyday people.
-                </p>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Pure Advertising Strategy</h2>
-                <p class="section-text">
-                    No dev wallets for personal gain. No complex tokenomics. Just pure, relentless advertising across the platforms where real people discover new things.
+            <div class="main-content">
+                <h1 class="logo">Claire</h1>
+                <p class="subtitle">
+                    Meet Claire, the first agent we built using claude opus. 
+                    One of the first projects to actually make it
                 </p>
                 
-                <div class="platforms">
-                    <div class="platform">TikTok Campaigns</div>
-                    <div class="platform">YouTube Ads</div>
-                    <div class="platform">Google Search</div>
-                    <div class="platform">Meta Advertising</div>
+                <div class="tech-badge">
+                    Powered by Claude Opus 3
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="showDocs()">
+                        Docs
+                    </button>
+                    <button class="btn btn-primary" onclick="showChat()">
+                        Try Her Out
+                    </button>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="highlight">
-                <h3 class="highlight-title">The Mission</h3>
-                <p class="highlight-text">
-                    While other projects focus on technical complexity, Advert Coin focuses on human psychology. We believe the best technology means nothing if people don't know it exists. Our mission is simple: make crypto accessible through visibility.
-                </p>
+    <div id="docsPage" class="docs-page">
+        <div class="docs-header">
+            <div class="container">
+                <div class="header-content">
+                    <button class="back-btn" onclick="showLanding()">← Back</button>
+                    <h2 class="docs-title">Documentation</h2>
+                    <div></div>
+                </div>
             </div>
         </div>
-    </section>
+        
+        <div class="container">
+            <div class="docs-content">
+                <div class="docs-section">
+                    <h3>What is Claire?</h3>
+                    <p>Claire is an advanced AI agent built with Claude Opus 3, designed to operate onchain as one of the first AI agents in the decentralized ecosystem. She combines the sophisticated reasoning capabilities of Claude Opus 3 with blockchain transparency and trustless interactions.</p>
+                </div>
 
-    <footer class="footer">
-        <div class="footer-text">Advert Coin - Crypto for everyone, everywhere</div>
-    </footer>
+                <div class="docs-section">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><strong>Onchain Operations:</strong> All interactions are recorded on the blockchain for transparency</li>
+                        <li><strong>Claude Opus 3 Powered:</strong> Advanced reasoning and natural language capabilities</li>
+                        <li><strong>Trustless Interactions:</strong> No need to trust a centralized service</li>
+                        <li><strong>Verifiable Responses:</strong> All AI outputs can be cryptographically verified</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>API Integration</h3>
+                    <p>Integrate Claire into your applications using our simple REST API:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">POST /api/chat</div>
+                        <pre><code>{
+  "message": "Hello Claire, how can you help me?",
+  "user_id": "0x1234...abcd",
+  "session_id": "optional_session_id"
+}</code></pre>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">Response</div>
+                        <pre><code>{
+  "response": "Hi! I'm Claire, your onchain AI assistant...",
+  "transaction_hash": "0xabc123...",
+  "timestamp": 1690123456,
+  "gas_used": 45000
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="docs-section">
+                    <h3>JavaScript SDK</h3>
+                    <p>Use our JavaScript SDK for easy integration:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">Installation</div>
+                        <pre><code>npm install claire-sdk</code></pre>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">Usage</div>
+                        <pre><code>import { ClaireClient } from 'claire-sdk';
+
+const claire = new ClaireClient({
+  apiKey: 'your-api-key',
+  network: 'ethereum' // or 'polygon', 'arbitrum'
+});
+
+// Send a message to Claire
+const response = await claire.chat({
+  message: 'Explain blockchain to me',
+  userId: '0x1234...abcd'
+});
+
+console.log(response.message);
+console.log('Transaction:', response.txHash);</code></pre>
+                    </div>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Smart Contract Integration</h3>
+                    <p>Call Claire directly from your smart contracts:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">Solidity Example</div>
+                        <pre><code>pragma solidity ^0.8.19;
+
+import "./ClaireInterface.sol";
+
+contract MyDApp {
+    IClaireAgent public claire;
+    
+    constructor(address _claireAddress) {
+        claire = IClaireAgent(_claireAddress);
+    }
+    
+    function askClaire(string memory question) public returns (bytes32) {
+        return claire.processQuery(
+            question,
+            msg.sender,
+            block.timestamp
+        );
+    }
+    
+    function getResponse(bytes32 queryId) public view returns (string memory) {
+        return claire.getResponse(queryId);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Python Integration</h3>
+                    <p>Use Claire in your Python applications:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">Python SDK</div>
+                        <pre><code>from claire_sdk import ClaireClient
+
+# Initialize Claire client
+client = ClaireClient(
+    api_key="your-api-key",
+    network="ethereum"
+)
+
+# Send message
+response = client.chat(
+    message="What are the benefits of onchain AI?",
+    user_id="0x1234...abcd"
+)
+
+print(f"Claire: {response.message}")
+print(f"Gas used: {response.gas_used}")
+print(f"TX Hash: {response.tx_hash}")</code></pre>
+                    </div>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Supported Networks</h3>
+                    <ul>
+                        <li><strong>Ethereum Mainnet:</strong> 0x742d35Cc6635C0532925a3b8D93E64D6C46123456</li>
+                        <li><strong>Polygon:</strong> 0x9E2C5A8B7D4F3E6A1B8C9D0E1F2A3B4C5D6E7F890</li>
+                        <li><strong>Arbitrum:</strong> 0x1A2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9012</li>
+                        <li><strong>Base:</strong> 0x3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9012345A</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Rate Limits & Pricing</h3>
+                    <p>Current usage limits and costs:</p>
+                    <ul>
+                        <li><strong>Free tier:</strong> 100 queries per day</li>
+                        <li><strong>Developer tier:</strong> 1,000 queries per day ($10/month)</li>
+                        <li><strong>Pro tier:</strong> 10,000 queries per day ($50/month)</li>
+                        <li><strong>Enterprise:</strong> Custom limits and pricing</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Getting Started</h3>
+                    <ol>
+                        <li>Sign up for an API key at <code>https://api.claire-ai.com</code></li>
+                        <li>Install the SDK for your preferred language</li>
+                        <li>Initialize the client with your API key</li>
+                        <li>Start building with Claire!</li>
+                    </ol>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Support</h3>
+                    <p>Need help? Reach out to us:</p>
+                    <ul>
+                        <li><strong>Discord:</strong> discord.gg/claire-ai</li>
+                        <li><strong>GitHub:</strong> github.com/claire-ai/sdk</li>
+                        <li><strong>Email:</strong> support@claire-ai.com</li>
+                        <li><strong>Documentation:</strong> docs.claire-ai.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chatPage" class="chat-page">
+        <div class="chat-header">
+            <div class="container">
+                <div class="header-content">
+                    <button class="back-btn" onclick="showLanding()">← Back</button>
+                    <h2 class="chat-title">Chat with Claire</h2>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        Hi there! I'm Claire, your AI assistant powered by Claude Opus 3. I'm excited to be one of the first AI agents operating onchain! How can I help you today?
+                    </div>
+                </div>
+                
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+                
+                <div class="chat-input">
+                    <input type="text" class="input-field" id="messageInput" placeholder="Ask Claire anything..." onkeypress="handleKeyPress(event)">
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        function scrollToContent() {
-            document.querySelector('.content').scrollIntoView({
-                behavior: 'smooth'
-            });
+        function showLanding() {
+            document.getElementById('landingPage').style.display = 'flex';
+            document.getElementById('chatPage').style.display = 'none';
+            document.getElementById('docsPage').style.display = 'none';
         }
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        function showChat() {
+            document.getElementById('landingPage').style.display = 'none';
+            document.getElementById('chatPage').style.display = 'block';
+            document.getElementById('docsPage').style.display = 'none';
+            document.getElementById('messageInput').focus();
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+        function showDocs() {
+            document.getElementById('landingPage').style.display = 'none';
+            document.getElementById('chatPage').style.display = 'none';
+            document.getElementById('docsPage').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
 
-        // Observe all sections
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            showTyping();
+            
+            // Simulate AI response
+            setTimeout(() => {
+                hideTyping();
+                const responses = [
+                    "That's a great question! As an onchain AI agent, I can help you with various tasks while ensuring transparency and decentralization. What specific area would you like to explore?",
+                    "Thanks for reaching out! I'm designed to be helpful, harmless, and honest. Being onchain means our interactions can be verified and trusted. How can I assist you today?",
+                    "Hello! I'm excited to chat with you. As one of the first AI agents operating onchain, I represent a new frontier in decentralized AI. What would you like to know?",
+                    "Interesting! I'm powered by Claude Opus 3 and operate onchain for transparency. I can help with analysis, creative tasks, problem-solving, and more. What's on your mind?",
+                    "Great to meet you! My onchain capabilities allow for trustless AI interactions. Whether you need help with research, writing, or brainstorming, I'm here to help!",
+                    "Hi! As an onchain AI agent, I bring the power of Claude Opus 3 to the blockchain. This means our conversation is transparent and verifiable. How can I help you today?"
+                ];
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                addMessage(randomResponse, 'bot');
+            }, 1500 + Math.random() * 1000);
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = text;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            document.getElementById('typingIndicator').style.display = 'block';
+            document.getElementById('sendBtn').disabled = true;
+            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+        }
+
+        function hideTyping() {
+            document.getElementById('typingIndicator').style.display = 'none';
+            document.getElementById('sendBtn').disabled = false;
+        }
+
+        // Add some initial animation
+        window.addEventListener('load', () => {
+            document.querySelector('.main-content').style.animation = 'slideIn 1s ease';
         });
     </script>
 </body>
