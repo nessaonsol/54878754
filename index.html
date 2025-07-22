@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claire</title>
+    <title>claudia</title>
     <style>
         * {
             margin: 0;
@@ -396,16 +396,16 @@
     </style>
 </head>
 <body>
-    <button class="x-button" onclick="window.open('https://x.com/ClaireOpus', '_blank')" title="Follow us on X">
+    <button class="x-button" onclick="window.open('https://x.com/claudiaOpus', '_blank')" title="Follow us on X">
         𝕏
     </button>
     
     <div id="landingPage" class="landing-page">
         <div class="container">
             <div class="main-content">
-                <h1 class="logo">Claire</h1>
+                <h1 class="logo">claudia</h1>
                 <p class="subtitle">
-                    Meet Claire, the first agent we built using claude opus. 
+                    Meet claudia, the first agent we built using claude opus. 
                     One of the first projects to actually make it
                 </p>
                 
@@ -439,8 +439,8 @@
         <div class="container">
             <div class="docs-content">
                 <div class="docs-section">
-                    <h3>What is Claire?</h3>
-                    <p>Claire is an advanced AI agent built with Claude Opus 3, designed to operate onchain as one of the first AI agents in the decentralized ecosystem. She combines the sophisticated reasoning capabilities of Claude Opus 3 with blockchain transparency and trustless interactions.</p>
+                    <h3>What is claudia?</h3>
+                    <p>claudia is an advanced AI agent built with Claude Opus 3, designed to operate onchain as one of the first AI agents in the decentralized ecosystem. She combines the sophisticated reasoning capabilities of Claude Opus 3 with blockchain transparency and trustless interactions.</p>
                 </div>
 
                 <div class="docs-section">
@@ -455,12 +455,12 @@
 
                 <div class="docs-section">
                     <h3>API Integration</h3>
-                    <p>Integrate Claire into your applications using our simple REST API:</p>
+                    <p>Integrate claudia into your applications using our simple REST API:</p>
                     
                     <div class="code-block">
                         <div class="code-header">POST /api/chat</div>
                         <pre><code>{
-  "message": "Hello Claire, how can you help me?",
+  "message": "Hello claudia, how can you help me?",
   "user_id": "0x1234...abcd",
   "session_id": "optional_session_id"
 }</code></pre>
@@ -469,7 +469,7 @@
                     <div class="code-block">
                         <div class="code-header">Response</div>
                         <pre><code>{
-  "response": "Hi! I'm Claire, your onchain AI assistant...",
+  "response": "Hi! I'm claudia, your onchain AI assistant...",
   "transaction_hash": "0xabc123...",
   "timestamp": 1690123456,
   "gas_used": 45000
@@ -483,20 +483,20 @@
                     
                     <div class="code-block">
                         <div class="code-header">Installation</div>
-                        <pre><code>npm install claire-sdk</code></pre>
+                        <pre><code>npm install claudia-sdk</code></pre>
                     </div>
 
                     <div class="code-block">
                         <div class="code-header">Usage</div>
-                        <pre><code>import { ClaireClient } from 'claire-sdk';
+                        <pre><code>import { claudiaClient } from 'claudia-sdk';
 
-const claire = new ClaireClient({
+const claudia = new claudiaClient({
   apiKey: 'your-api-key',
   network: 'ethereum' // or 'polygon', 'arbitrum'
 });
 
-// Send a message to Claire
-const response = await claire.chat({
+// Send a message to claudia
+const response = await claudia.chat({
   message: 'Explain blockchain to me',
   userId: '0x1234...abcd'
 });
@@ -508,23 +508,23 @@ console.log('Transaction:', response.txHash);</code></pre>
 
                 <div class="docs-section">
                     <h3>Smart Contract Integration</h3>
-                    <p>Call Claire directly from your smart contracts:</p>
+                    <p>Call claudia directly from your smart contracts:</p>
                     
                     <div class="code-block">
                         <div class="code-header">Solidity Example</div>
                         <pre><code>pragma solidity ^0.8.19;
 
-import "./ClaireInterface.sol";
+import "./claudiaInterface.sol";
 
 contract MyDApp {
-    IClaireAgent public claire;
+    IclaudiaAgent public claudia;
     
-    constructor(address _claireAddress) {
-        claire = IClaireAgent(_claireAddress);
+    constructor(address _claudiaAddress) {
+        claudia = IclaudiaAgent(_claudiaAddress);
     }
     
-    function askClaire(string memory question) public returns (bytes32) {
-        return claire.processQuery(
+    function askclaudia(string memory question) public returns (bytes32) {
+        return claudia.processQuery(
             question,
             msg.sender,
             block.timestamp
@@ -532,7 +532,7 @@ contract MyDApp {
     }
     
     function getResponse(bytes32 queryId) public view returns (string memory) {
-        return claire.getResponse(queryId);
+        return claudia.getResponse(queryId);
     }
 }</code></pre>
                     </div>
@@ -540,14 +540,14 @@ contract MyDApp {
 
                 <div class="docs-section">
                     <h3>Python Integration</h3>
-                    <p>Use Claire in your Python applications:</p>
+                    <p>Use claudia in your Python applications:</p>
                     
                     <div class="code-block">
                         <div class="code-header">Python SDK</div>
-                        <pre><code>from claire_sdk import ClaireClient
+                        <pre><code>from claudia_sdk import claudiaClient
 
-# Initialize Claire client
-client = ClaireClient(
+# Initialize claudia client
+client = claudiaClient(
     api_key="your-api-key",
     network="ethereum"
 )
@@ -558,7 +558,7 @@ response = client.chat(
     user_id="0x1234...abcd"
 )
 
-print(f"Claire: {response.message}")
+print(f"claudia: {response.message}")
 print(f"Gas used: {response.gas_used}")
 print(f"TX Hash: {response.tx_hash}")</code></pre>
                     </div>
@@ -588,10 +588,10 @@ print(f"TX Hash: {response.tx_hash}")</code></pre>
                 <div class="docs-section">
                     <h3>Getting Started</h3>
                     <ol>
-                        <li>Sign up for an API key at <code>https://api.claire-ai.com</code></li>
+                        <li>Sign up for an API key at <code>https://api.claudia-ai.com</code></li>
                         <li>Install the SDK for your preferred language</li>
                         <li>Initialize the client with your API key</li>
-                        <li>Start building with Claire!</li>
+                        <li>Start building with claudia!</li>
                     </ol>
                 </div>
 
@@ -599,10 +599,10 @@ print(f"TX Hash: {response.tx_hash}")</code></pre>
                     <h3>Support</h3>
                     <p>Need help? Reach out to us:</p>
                     <ul>
-                        <li><strong>Discord:</strong> discord.gg/claire-ai</li>
-                        <li><strong>GitHub:</strong> github.com/claire-ai/sdk</li>
-                        <li><strong>Email:</strong> support@claire-ai.com</li>
-                        <li><strong>Documentation:</strong> docs.claire-ai.com</li>
+                        <li><strong>Discord:</strong> discord.gg/claudia-ai</li>
+                        <li><strong>GitHub:</strong> github.com/claudia-ai/sdk</li>
+                        <li><strong>Email:</strong> support@claudia-ai.com</li>
+                        <li><strong>Documentation:</strong> docs.claudia-ai.com</li>
                     </ul>
                 </div>
             </div>
@@ -614,7 +614,7 @@ print(f"TX Hash: {response.tx_hash}")</code></pre>
             <div class="container">
                 <div class="header-content">
                     <button class="back-btn" onclick="showLanding()">← Back</button>
-                    <h2 class="chat-title">Chat with Claire</h2>
+                    <h2 class="chat-title">Chat with claudia</h2>
                     <div></div>
                 </div>
             </div>
@@ -624,7 +624,7 @@ print(f"TX Hash: {response.tx_hash}")</code></pre>
             <div class="chat-container">
                 <div class="chat-messages" id="chatMessages">
                     <div class="message bot">
-                        Hi there! I'm Claire, your AI assistant powered by Claude Opus 3. I'm excited to be one of the first AI agents operating onchain! How can I help you today?
+                        Hi there! I'm claudia, your AI assistant powered by Claude Opus 3. I'm excited to be one of the first AI agents operating onchain! How can I help you today?
                     </div>
                 </div>
                 
@@ -637,7 +637,7 @@ print(f"TX Hash: {response.tx_hash}")</code></pre>
                 </div>
                 
                 <div class="chat-input">
-                    <input type="text" class="input-field" id="messageInput" placeholder="Ask Claire anything..." onkeypress="handleKeyPress(event)">
+                    <input type="text" class="input-field" id="messageInput" placeholder="Ask claudia anything..." onkeypress="handleKeyPress(event)">
                     <button class="send-btn" id="sendBtn" onclick="sendMessage()">Send</button>
                 </div>
             </div>
